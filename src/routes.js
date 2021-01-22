@@ -1,6 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import softwareRegistrar from './modules/Software/Register/index';
+import softwareListar from './modules/Software/List/index';
+
 import equipamentoEditar from './modules/Equipamento/Editar/index';
 import equipamentoListar from './modules/Equipamento/Listar/index';
 import equipamentoRegistrar from './modules/Equipamento/Registrar/index';
@@ -34,6 +37,9 @@ export default function Routes() {
           path="/Equipamento/Visualizar/:id"
           component={equipamentoVisualizar}
         />
+
+        <Route path="/Software/Registrar" component={softwareRegistrar} />
+        <Route path="/Software/Listar" component={softwareListar} />
       </Switch>
     </BrowserRouter>
   );

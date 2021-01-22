@@ -29,6 +29,14 @@ function Menu() {
         </li>
         <li className="menuSubMenu">
           <p> Software </p>
+          <ul>
+            <li className="menuSubSubMenu">
+              <a href="/Software/Registrar"> Registrar</a>
+            </li>
+            <li className="menuSubSubMenu">
+              <a href="/Software/Listar"> Listar </a>
+            </li>
+          </ul>
         </li>
         <li className="menuSubMenu">
           <p> Chamados </p>
