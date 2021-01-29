@@ -38,7 +38,7 @@ export default class ModalDelete extends React.PureComponent {
           </div>
           <div className="modalDeleteActions">
             <div className="modalDeleteNot">
-              <button type="button" onClick={this.onClose}>
+              <button type="button" onClick={this.props.onClose}>
                 <strong> NÃO </strong>
               </button>
             </div>
@@ -62,5 +62,6 @@ export default class ModalDelete extends React.PureComponent {
 }
 ModalDelete.propTypes = {
   onClose: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
 };
