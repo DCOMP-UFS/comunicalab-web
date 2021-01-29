@@ -5,7 +5,7 @@
   left: 0px;
   bottom: 0px;
   background: rgba(0, 0, 0, 0.2);
-  z-index: 2;
+
 }
 
 .modalDeleteBox {
@@ -15,8 +15,9 @@
   right: 25%;
   width: 50%;
   background-color: white;
-  z-index: 3;
+  z-index: 3000;
 }
+
 .modalDeleteBox.off {
   opacity: 0;
   visibility: hidden;
@@ -63,6 +64,7 @@
 
 .modalDeleteNot button:hover {
   background-color: #ccc;
+  cursor: pointer;
 }
 
 .modalDeleteYes {
@@ -82,4 +84,5 @@
 
 .modalDeleteYes button:hover {
   background-color: #0202b9;
+  cursor: pointer;
 }

@@ -1,12 +1,12 @@
 module.exports = function selectionStatus(status) {
-  if (status === 'Livre') {
+  if (status === false) {
     return 'laboratorioStatusVerde';
   }
-  if (status === 'Ocupado') {
+  if (status === true) {
     return 'laboratorioStatusVermelho';
   }
-  if (status === 'Reservado') {
-    return 'laboratorioStatusAmarelo';
-  }
+  //if (status === 'Reservado') {
+  //  return 'laboratorioStatusAmarelo';
+  //}
   return 'laboratorioStatusError';
 };
