@@ -1,5 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable import/named */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 

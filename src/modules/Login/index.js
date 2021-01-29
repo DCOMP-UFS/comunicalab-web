@@ -1,5 +1,6 @@
 import React from 'react';
 import SigninForm from './components/SigninForm';
+import ComunicaLabLogo from '../../assets/ComunicaLab.png';
 
 import './styles/index.css';
 
@@ -9,7 +10,7 @@ function Login() {
       <img
         alt="Logo da aplicação 'Comunica Lab' "
         className="loginLogo"
-        src={require('../../assets/ComunicaLab.png')}
+        src={ComunicaLabLogo}
       />
       <div className="loginVerticalBar" />
       <SigninForm />

@@ -3,10 +3,10 @@ module.exports = function selectionStatus(status) {
     return 'equipStatusGreen';
   }
   if (
-    status === 'Ocupado'
-    || status === 'Sem Rede'
-    || status === 'Problema H.W.'
-    || status === 'Em uso'
+    status === 'Ocupado' ||
+    status === 'Sem Rede' ||
+    status === 'Problema H.W.' ||
+    status === 'Em uso'
   ) {
     return 'equipStatusRed';
   }

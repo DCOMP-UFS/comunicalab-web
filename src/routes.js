@@ -11,6 +11,7 @@ import laboratorioListar from './modules/Laboratorio/Listar/index';
 import laboratorioRegistrar from './modules/Laboratorio/Registrar/index';
 import laboratorioVisualizar from './modules/Laboratorio/Visualizar/index';
 import login from './modules/Login/index';
+import OsImageRouter from './modules/os-image/OsImageRouter';
 
 export default function Routes() {
   return (
@@ -34,6 +35,10 @@ export default function Routes() {
           path="/Equipamento/Visualizar/:id"
           component={equipamentoVisualizar}
         />
+
+        <Route path="/Imagens">
+          <OsImageRouter />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

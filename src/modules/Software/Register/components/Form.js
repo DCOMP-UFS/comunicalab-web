@@ -74,8 +74,8 @@ function Formulario() {
                   value={values.category}
                   onBlur={handleBlur}
                   className={
-                      touched.category && errors.category ? 'has-error' : null
-                    }
+                    touched.category && errors.category ? 'has-error' : null
+                  }
                 />
               </div>
               <Error touched={touched.category} message={errors.category} />
@@ -92,10 +92,8 @@ function Formulario() {
                   defaultValue={values.equipment}
                   onBlur={handleBlur}
                   className={
-                      touched.equipment && errors.equipment
-                        ? 'has-error'
-                        : null
-                    }
+                    touched.equipment && errors.equipment ? 'has-error' : null
+                  }
                 >
                   <option value="" disabled>
                     Escolha o equipamento
@@ -111,10 +109,7 @@ function Formulario() {
                   </option>
                 </select>
               </div>
-              <Error
-                touched={touched.equipment}
-                message={errors.equipment}
-              />
+              <Error touched={touched.equipment} message={errors.equipment} />
             </div>
             <div className="formularioButton">
               <div className="formularioButtonCancelar">

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Formik, Form, useField } from 'formik';
 import * as Yup from 'yup';
-
+import UserIcon from '../../../assets/User.png';
+import UserSquareIcon from '../../../assets/UserForm.png';
+import PasswordSquareIcon from '../../../assets/Password.png';
 import '../styles/SigninForm.css';
 
 const TextInput = ({ label, ...props }) => {
@@ -37,11 +39,7 @@ const Checkbox = ({ children, ...props }) => {
 
 const SigninForm = () => (
   <div className="form">
-    <img
-      alt="Avatar do usuário"
-      className="userImg"
-      src={require('../../../assets/User.png')}
-    />
+    <img alt="Avatar do usuário" className="userImg" src={UserIcon} />
     <Formik
       initialValues={{
         user: '',
@@ -64,26 +62,22 @@ const SigninForm = () => (
     >
       <Form className="formInput">
         <TextInput
-          label={(
-            <img
-              alt="Usuário"
-              className="userForm"
-              src={require('../../../assets/UserForm.png')}
-            />
-          )}
+          label={
+            <img alt="Usuário" className="userForm" src={UserSquareIcon} />
+          }
           name="user"
           specClassName="userInput"
           id="user"
           type="text"
         />
         <TextInput
-          label={(
+          label={
             <img
               alt="Senha"
               className="passwordForm"
-              src={require('../../../assets/Password.png')}
+              src={PasswordSquareIcon}
             />
-          )}
+          }
           name="password"
           specClassName="passwordInput"
           id="password"

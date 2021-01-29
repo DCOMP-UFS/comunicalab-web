@@ -59,6 +59,7 @@
   border-radius: 5px;
   height: 30px;
   width: 100px;
+  cursor: pointer;
 }
 
 .modalDeleteNot button:hover {
@@ -78,6 +79,7 @@
   height: 30px;
   width: 100px;
   color: white;
+  cursor: pointer;
 }
 
 .modalDeleteYes button:hover {
