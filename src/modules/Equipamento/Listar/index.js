@@ -23,6 +23,13 @@ export default function ListarEquipamento() {
       statusUso: 'Disponivel',
       statusEquip: 'Problema H.W.',
     },
+    equip03: {
+      id: '03',
+      name: 'Ar condicionado 1',
+      category: 'others',
+      statusUso: 'Em uso',
+      statusEquip: 'Problema H.W.npm',
+    },
   };
   const quantidade = `${Object.keys(equips).length} itens`;
   return (
@@ -33,6 +40,7 @@ export default function ListarEquipamento() {
       <div className="listaEquipamentos">
         <Equip key={equips.equip01.id} equip={equips.equip01} />
         <Equip key={equips.equip02.id} equip={equips.equip02} />
+        <Equip key={equips.equip03.id} equip={equips.equip03} />
       </div>
     </div>
   );
