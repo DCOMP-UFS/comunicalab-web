@@ -10,8 +10,6 @@ import '../styles/Laboratorio.css';
 
 function Laboratorio({ lab }) {
   const statusCor = selectionStatus(lab.is_in_use);
-  const linkEditar = `/Laboratorio/Editar/${lab.id}`;
-  const linkVisualizar = `/Laboratorio/Visualizar/${lab.id}`;
   const [show, setShow] = useState(false);
 
   function showModal() {
@@ -54,7 +52,11 @@ function Laboratorio({ lab }) {
           <p />
           <ul>
             <li className="laboratorioSubSubMenu">
-              <Link to={linkVisualizar} state={lab}>
+            <Link to={{pathname: `Visualizar/${lab.id}`,
+                        state : {
+                          id : lab.id,
+                          name : lab.name
+                        }}} >
                 <button type="button"> VISUALIZAR </button>
               </Link>
             </li>

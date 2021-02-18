@@ -5,7 +5,6 @@ import Title from '../../../utils/components/Title';
 import Toolbar from '../../../utils/components/Toolbar';
 import Laboratorio from './components/Laboratorio';
 import './styles/index.css';
-
 class Listar extends Component {
   
   constructor(props){

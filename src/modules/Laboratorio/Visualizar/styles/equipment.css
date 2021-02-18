@@ -1,0 +1,225 @@
+.equipamento {
+  float: left;
+  width: 350px;
+  height: 135px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 14px;
+  margin-top: 20px;
+  margin-right: 25px;
+  display: flex;
+  justify-items: center;
+}
+
+.computadorImg {
+  height: 92px;
+}
+.computadorImg img {
+  float: left;
+  margin-left: 35px;
+  margin-top: 15px;
+  margin-bottom: 0%;
+  width: 148px;
+  height: 92px ;
+}
+
+.equipamentoStatusVerde {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  background-color: #09ff00;
+}
+
+.equipamentoStatusVermelho {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  background-color: #ff0000;
+}
+
+.equipamentoStatusAmarelo {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  background-color: #ffee00;
+}
+
+.separator {
+  float: left;
+  margin-top: 15px;
+  margin-left: 5px;
+  height: 95px;
+  opacity: 0.2;
+  border-left: 2px solid;
+  box-sizing: border-box;
+}
+
+.equipamenteInfo {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  width: 65%;
+  height: 75%;
+}
+
+.equipamentoStatus{
+  height: 30%;
+}
+.equipamentoStatus2 {
+  height: 35%;
+}
+.equipamentoStatus h2 {
+  position: absolute;
+  display: flex;
+  height: auto;
+  padding-left: 10px;
+  font-size: 12px;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.equipamentoStatus2 h2 {
+  position: relative;
+  margin-top: 17px;
+  padding-left: 10px;
+  font-size: 12px;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.equipamentoStatusDown {
+  margin-top: 5px;
+  position: relative;
+  display: flex;
+  justify-content: left;
+  margin-left: 10px;
+}
+
+.equipamentoStatusDown h3 {
+  padding-left: 5px;
+  font-size: 13px;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.equipamentoName {
+  position: relative;
+  margin-left: 25%;
+  bottom: -8px;
+}
+
+.equipamentoName h2 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 14px;
+
+  color: #23238B;
+}
+
+.equipamentoMenu {
+  height: 30%;
+  margin: 0;
+  padding: 0;
+  display: inline;
+  background: #ffffff;
+}
+
+.equipamentoMenu {
+  list-style: none;
+}
+
+.equipamentoMenu li:hover ul {
+  display: block;
+}
+
+.equipamentoMenu li:hover li button {
+  background: none;
+}
+
+.equipamentoMenu li:hover li p {
+  background: none;
+}
+
+.equipamentoSubMenu {
+  float: left;
+  padding: 0px;
+}
+
+.equipamentoSubMenu p {
+  float: right;
+  margin-top: 5px;
+  width: 10px;
+  height: 30px;
+  margin-right: 5px;
+  background: rgba(255, 0, 0, 1);
+  border: none;
+  background: url('../../../../assets/Pontos.png') no-repeat;
+  background-position: center;
+  text-indent: -9999px;
+}
+
+.equipamentoSubMenu:hover p {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.equipamentoSubMenu p:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.equipamentoSubMenu ul {
+  padding: 0px;
+  margin-top: 7px;
+  margin-left: -110px;
+  border: 0px;
+  border-radius: 8px;
+  z-index: 1;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: none;
+  height: auto;
+  position: absolute;
+}
+
+.equipamentoSubSubMenu {
+  margin: 0px;
+  padding: 0px;
+  max-width: 200px;
+  word-wrap: break-word;
+  float: none;
+  display: block;
+}
+
+.equipamentoSubSubMenu button {
+  margin: 0px;
+  display: block;
+  min-width: 150px;
+  max-height: 70px;
+  font-weight: bold;
+  line-height: 35px;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  text-decoration: none;
+  background-color: rgba(10, 23, 55, 0);
+  border: none;
+  display: inline-block;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.equipamentoSubSubMenu:hover {
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.15);
+}
+.equipamentoSubSubMenu:active {
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+}

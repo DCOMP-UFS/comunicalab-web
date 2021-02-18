@@ -62,6 +62,5 @@ export default class ModalDelete extends React.PureComponent {
 }
 ModalDelete.propTypes = {
   onClose: PropTypes.func.isRequired,
-  onConfirm: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
 };

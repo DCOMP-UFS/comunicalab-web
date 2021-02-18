@@ -23,6 +23,7 @@ const Formulario = (props) => {
       props.onSubmit(values);
     },
   })
+ 
   return (
     <div className="formulario">
         <form onSubmit={formik.handleSubmit}>
@@ -69,8 +70,8 @@ const Formulario = (props) => {
               <p>Localização:</p>
             </div>
             <div className="formularioSelect">
-              <select
-                name="localization"
+            <select
+                name= "localization"
                 id="localization"
                 onChange={formik.handleChange}
                 defaultValue={formik.values.localization}
@@ -81,19 +82,15 @@ const Formulario = (props) => {
                   : null
                 }
               >
-                <option value="" disabled>
-                  Escolha a localização
+              <option value="" disabled>
+                Escolha a localização
+              </option>
+              {props.location.map(item =>(
+                <option value={item.building} id={item.id}>
+                    {item.building} {item.floor}
                 </option>
-                <option value="2" id="2">
-                    2
-                </option>
-                <option value="3" id="3">
-                  3
-                </option>
-                <option value="4" id="4">
-                  4
-                </option>
-              </select>
+              ))}
+            </select>
             </div>
             <Error
               touched={formik.touched.localization}
@@ -117,6 +114,7 @@ const Formulario = (props) => {
 
 Formulario.propTypes = {
   initialValues: PropsType.object,
+  location: PropsType.array.isRequired,
   onSubmit: PropsType.func.isRequired,
   onCancel: PropsType.func.isRequired
   }

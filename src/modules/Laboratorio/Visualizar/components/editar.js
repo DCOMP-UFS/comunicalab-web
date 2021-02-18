@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import Menu from '../../../utils/components/Menu';
-import Title from '../../../utils/components/Title';
-import Toolbar from '../../../utils/components/Toolbar';
-import Formulario from './components/Formulario';
+import Menu from '../../../../utils/components/Menu';
+import Title from '../../../../utils/components/Title';
+import Toolbar from '../../../../utils/components/Toolbar';
+import Formulario from '../../Editar/components/Formulario';
 import {Redirect} from 'react-router-dom';
-import api from '../../../services/api';
+import api from '../../../../services/api';
 
 
 const Editar =  (props) => {
