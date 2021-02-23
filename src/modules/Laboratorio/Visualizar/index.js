@@ -45,7 +45,7 @@ class Listar extends Component {
             <ul>
               {this.state.eqpInLab.map( item =>(
                 <li key = {item.id}>
-                    <Equipamento eqp = {item}/>
+                    <Equipamento eqp = {item} path = {window.location.pathname}/>
                 </li>
               ))}
             </ul>

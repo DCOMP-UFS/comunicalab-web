@@ -30,8 +30,6 @@ const Editar =  (props) => {
     const newLab = {
       name: values.name,
       capacity : values.capacity,
-      is_in_use : false,
-      occupied_at : "2020-02-10T23:02:10.000Z",
     };
     try {
       await api.put(`/laboratory/${props.location.state.id}`, newLab);

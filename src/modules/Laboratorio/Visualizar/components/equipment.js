@@ -8,7 +8,7 @@ import selectionStatus from '../actions/selectionStatus.js';
 import computerImg from '../../../../assets/computador.jpg'
 import '../styles/equipment.css';
 
-function Equipment({ eqp }) {
+function Equipment(props) {
   const statusCor = selectionStatus(false);
   const [show, setShow] = useState(false);
 
@@ -21,7 +21,7 @@ function Equipment({ eqp }) {
       <div className="computadorImg">
           <img src ={computerImg} alt = "computerImg"/>
           <div className = "equipamentoName">
-            <h2> {eqp.brand} </h2>
+            <h2> {props.eqp.brand} </h2>
           </div>
       </div>
       <div className="separator" />
@@ -51,10 +51,11 @@ function Equipment({ eqp }) {
           <p />
           <ul>
             <li className="equipamentoSubSubMenu">
-              <Link to={{pathname: `Editar/${eqp.id}`,
+              <Link to={{pathname: `${props.path}/Editar/${props.eqp.id}`,
                         state : {
-                          id : eqp.id,
-                          name : eqp.brand
+                          id : props.eqp.id,
+                          brand : props.eqp.brand,
+                          path : props.path
                         }}} >
                 <button type="button"> EDITAR </button>
               </Link>
@@ -71,8 +72,8 @@ function Equipment({ eqp }) {
         title="Excluir Equipamento?"
         onClose={showModal}
         show={show}
-        name={eqp.name}
-        id = {eqp.id}
+        name={props.eqp.brand}
+        id = {props.eqp.id}
       >
         Tem certeza que deseja excluir permanentemente este Equipamento?
       </ModalDelete>
@@ -82,7 +83,8 @@ function Equipment({ eqp }) {
 
 
 Equipment.propTypes = {
-  eqp: PropTypes.object,
+  eqp: PropTypes.object.isRequired,
+  path: PropTypes.string.isRequired
 };
 
 Equipment.defaultProps = {

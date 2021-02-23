@@ -1,22 +1,21 @@
 import React from 'react';
 import {useFormik } from 'formik';
 import * as Yup from 'yup';
-import Error from './Error';
-import '../styles/Formulario.css';
+import Error from '../../Editar/components/Error';
+import '../../Editar/components/Formulario';
 import PropsType from 'prop-types';
 
 const Formulario = (props) => {
   const validationSchema = Yup.object().shape({
     name: Yup.string()
-      .min(5, 'O nome do Equipamento tem que ser maior que 5 caracteres!')
       .max(255, 'O nome do Equipamento tem que ser menor que 255 caracteres!')
-      .required('Digite o nome do laboratorio!'),
+      .required('Digite o nome do Equipamento!'),
     capacity: Yup.number()
-      .required('Digite a capacidade do laboratorio!')
+      .required('Digite a categoria do Equipamento!')
   });
 
   const formik = useFormik ({
-    initialValues: {name: '', capacity: '', localization:''},
+    initialValues: {name: '', category: '', localization:''},
     validationSchema,
     validateOnMount:true,
     onSubmit : async (values) =>{
@@ -35,7 +34,7 @@ const Formulario = (props) => {
               <input
                 name="name"
                 id="name"
-                placeholder="Nome do Laboratorio"
+                placeholder="Nome do Equipamento"
                 type="text"
                 onChange={formik.handleChange}
                 value={formik.values.name}
@@ -47,23 +46,32 @@ const Formulario = (props) => {
           </div>
           <div className="formularioLinha">
             <div className="formularioLabel">
-              <p>Capacidade:</p>
+              <p>Categoria:</p>
             </div>
-            <div className="formularioInput">
-              <input
-                name="capacity"
-                id="capacity"
-                placeholder="Capacidade"
-                type="text"
+            <div className="formularioSelect">
+            <select
+                name= "category"
+                id= "category"
                 onChange={formik.handleChange}
-                value={formik.values.capacity}
+                defaultValue={formik.values.category}
                 onBlur={formik.handleBlur}
                 className={
-                  formik.touched.capacity && formik.errors.capacity ? 'has-error' : null
+                formik.touched.category && formik.errors.category
+                  ? 'has-error'
+                  : null
                 }
-              />
+              >
+              <option value="" disabled>
+                Escolha a Categoria
+              </option>
+              {props.categories.map(item =>(
+                <option value={item.id} key={item.id}>
+                    {item.name}
+                </option>
+              ))}
+            </select>
             </div>
-            <Error touched={formik.touched.capacity} message={formik.errors.capacity} />
+            <Error touched={formik.touched.category} message={formik.errors.category} />
           </div>
           <div className="formularioLinha">
             <div className="formularioLabel">
@@ -86,8 +94,8 @@ const Formulario = (props) => {
                 Escolha a localização
               </option>
               {props.location.map(item =>(
-                <option value={item.building} id={item.id}>
-                    {item.building} {item.floor}
+                <option value={item.id} key={item.id}>
+                    {item.name}
                 </option>
               ))}
             </select>
@@ -115,6 +123,7 @@ const Formulario = (props) => {
 Formulario.propTypes = {
   initialValues: PropsType.object,
   location: PropsType.array.isRequired,
+  categories: PropsType.array.isRequired,
   onSubmit: PropsType.func.isRequired,
   onCancel: PropsType.func.isRequired
   }
