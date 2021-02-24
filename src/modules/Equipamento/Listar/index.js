@@ -26,11 +26,21 @@ export default function ListarEquipamento() {
     equip03: {
       id: '03',
       name: 'Ar condicionado 1',
-      category: 'others',
+      category: 'Outro',
       statusUso: 'Em uso',
-      statusEquip: 'Problema H.W.npm',
+      statusEquip: 'Problema H.W.',
     },
   };
+  /*
+  const totalEquip = Object.keys(equips).length;
+  var listOutros = 0;
+  for(var i = 0; i < totalEquip; i++){
+    if (equips[i].category === 'Outro'){
+      listOutros++;
+    };
+  };
+  */
+
   const quantidade = `${Object.keys(equips).length} itens`;
   return (
     <div>
@@ -38,6 +48,9 @@ export default function ListarEquipamento() {
       <Menu />
       <Title title="Listar Equipamento" subTitle={quantidade} />
       <div className="listaEquipamentos">
+        <div className="listarOutrosEquipamentos">
+          <label className="outrosTitle">Outros({quantidade})</label>
+        </div>
         <Equip key={equips.equip01.id} equip={equips.equip01} />
         <Equip key={equips.equip02.id} equip={equips.equip02} />
         <Equip key={equips.equip03.id} equip={equips.equip03} />
