@@ -32,7 +32,6 @@ const Editar =  (props) => {
           console.log(err)
         })       
   });
-
   const submitHandler = async (values) =>{
     
     const newEquip = {
@@ -41,12 +40,11 @@ const Editar =  (props) => {
       laboratory_id : values.localization
     };
     try {
-      console.log(values);
       await api.put(`/equipment/${props.location.state.id}`, newEquip);
       setShouldRedirect(true);
       return (<Redirect to = "/Laboratorio/Listar"></Redirect>)
     } catch {
-      console.log('Erro no servidor. Por favor, tente mais tarde')
+      alert('Erro no servidor. Por favor, tente mais tarde')
     }
   }
   if (shouldRedirect) {

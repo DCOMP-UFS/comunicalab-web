@@ -25,7 +25,6 @@ const Editar =  (props) => {
         })
   });
 
-  console.log(location);  
   const submitHandler = async (values) =>{
     const newLab = {
       name: values.name,
@@ -36,7 +35,7 @@ const Editar =  (props) => {
       setShouldRedirect(true);
       return (<Redirect to = "/Laboratorio/Listar"></Redirect>)
     } catch {
-      console.log('Erro no servidor. Por favor, tente mais tarde')
+       alert('Erro no servidor. Por favor, tente mais tarde')
     }
   }
   if (shouldRedirect) {
