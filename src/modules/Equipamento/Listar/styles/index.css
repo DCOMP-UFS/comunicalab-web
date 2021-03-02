@@ -2,28 +2,35 @@
   margin: auto;
 }
 
-.listaEquipamentos {
-  padding: 20px;
-}
-
-.listaEquipamentos Equipamento {
-  margin-left: auto;
-  margin-bottom: auto;
-}
-
-.outrosTitle {
-  font: 'Roboto', Arial, Helvetica, sans-serif;
+.othersTitle {
   font-size: medium;
   text-align: left;
-  position: relative;
+  position: left;
   margin-top: 10px;
 }
 
-.outrosTitle::after {
+.othersTitle::after {
   content: '';
   display: inline-block;
   position: relative;
   width: 90%;
+  top: 50%;
+  height: 2px;
+  background: #282828;
+}
+
+.equiptTitle {
+  background-color: black;
+  display: inline;
+  font-size: medium;
+  text-align: left;
+}
+
+.equipTitle::after {
+  content: '';
+  display: inline-block;
+  position: relative;
+  width: 70%;
   top: 50%;
   height: 2px;
   background: #282828;
