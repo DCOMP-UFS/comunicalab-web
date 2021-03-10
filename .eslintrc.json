@@ -1,36 +1,3 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "jest": true
-  },
-  "extends": ["plugin:react/recommended", "airbnb"],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": false,
-    "ecmaFeatures": {
-      "globalReturn": false
-    },
-    "babelOptions": {
-      "configFile": "path/to/config.js"
-    }
-  },
-  "plugins": ["react", "jsx-a11y", "import", "import-helpers"],
-  "rules": {
-    "react/jsx-filename-extension": [
-      "error",
-      {
-        "extensions": [".js", ".jsx"]
-      }
-    ],
-    "global-require": "off",
-    "import/prefer-default-export": "off",
-    "no-unused-expressions": ["error", { "allowTaggedTemplates": true }],
-    "import/no-named-as-default": 0
-  }
+  "extends": ["react-app", "react-app/jest"]
 }

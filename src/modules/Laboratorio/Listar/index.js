@@ -1,41 +1,50 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import Menu from '../../../utils/components/Menu';
 import Title from '../../../utils/components/Title';
 import Toolbar from '../../../utils/components/Toolbar';
 import Laboratorio from './components/Laboratorio';
 import './styles/index.css';
+class Listar extends Component {
+  
+  constructor(props){
+    super(props);
+    this.state ={
+      isLoaded: false,
+      labs: [],  
+    }
+  }
 
-function Listar() {
-  const labs = {
-    lab01: {
-      id: '01',
-      name: 'Laboratorio 01',
-      location: 'DCOMP Antigo',
-      status: 'Livre',
-      capacity: '40',
-    },
-    lab02: {
-      id: '02',
-      name: 'Laboratorio 02',
-      location: 'DCOMP Antigo',
-      status: 'Livre',
-      capacity: '20',
-    },
-  };
-  const quantidade = `${Object.keys(labs).length} itens`;
 
+  componentDidMount(){
+    fetch('https://comunicabackdev.herokuapp.com/laboratory')
+    .then(res => res.json())  
+    .then(json => {
+        this.setState({
+          isLoaded: true,
+          labs:json, 
+        })
+      })
+  }  
+
+  render(){
   return (
     <div>
       <Toolbar />
       <Menu />
-      <Title title="Listar Laboratórios" subTitle={quantidade} />
+      <Title title="Listar Laboratórios"/>
       <div className="listaLaboratorios">
-        <Laboratorio key={labs.lab01.id} lab={labs.lab01} />
-        <Laboratorio key={labs.lab02.id} lab={labs.lab02} />
+        <ul>
+          {this.state.labs.map( item =>(
+            <li key = {item.id}>
+              <Laboratorio lab={item} />
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
+}
 }
 
 export default Listar;

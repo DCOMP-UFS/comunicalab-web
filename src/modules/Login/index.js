@@ -1,13 +1,21 @@
 import React from 'react';
+import SigninForm from './components/SigninForm';
+import ComunicaLabLogo from '../../assets/ComunicaLab.png';
 
-export default function Login() {
+import './styles/index.css';
+
+function Login() {
   return (
-    <div>
-      <form action="/Home">
-        <button className="btn" type="submit">
-          Entrar
-        </button>
-      </form>
+    <div className="login">
+      <img
+        alt="Logo da aplicação 'Comunica Lab' "
+        className="loginLogo"
+        src={ComunicaLabLogo}
+      />
+      <div className="loginVerticalBar" />
+      <SigninForm />
     </div>
   );
 }
+
+export default Login;

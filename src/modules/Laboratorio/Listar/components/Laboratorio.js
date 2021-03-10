@@ -1,5 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable import/named */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -11,13 +9,16 @@ import selectionStatus from '../actions/selectionStatus';
 import '../styles/Laboratorio.css';
 
 function Laboratorio({ lab }) {
-  const statusCor = selectionStatus(lab.status);
-  const linkEditar = `/Laboratorio/Editar/${lab.id}`;
-  const linkVisualizar = `/Laboratorio/Visualizar/${lab.id}`;
+  const statusCor = selectionStatus(lab.is_in_use);
   const [show, setShow] = useState(false);
 
   function showModal() {
     setShow(!show);
+  }
+
+  function isLabInUse(lab) {
+    if (lab.is_in_use) return "Ocupado"
+    else return "Livre"
   }
 
   return (
@@ -37,7 +38,7 @@ function Laboratorio({ lab }) {
           <h2>
             <b>Status:</b>
           </h2>
-          <h3>{lab.status}</h3>
+          <h3>{isLabInUse(lab)}</h3>
         </div>
         <div className="laboratorioCapacity">
           <h2>
@@ -51,12 +52,20 @@ function Laboratorio({ lab }) {
           <p />
           <ul>
             <li className="laboratorioSubSubMenu">
-              <Link to={linkVisualizar} state={lab}>
+            <Link to={{pathname: `Visualizar/${lab.id}`,
+                        state : {
+                          id : lab.id,
+                          name : lab.name
+                        }}} >
                 <button type="button"> VISUALIZAR </button>
               </Link>
             </li>
             <li className="laboratorioSubSubMenu">
-              <Link to={linkEditar}>
+              <Link to={{pathname: `Editar/${lab.id}`,
+                        state : {
+                          id : lab.id,
+                          name : lab.name
+                        }}} >
                 <button type="button"> EDITAR </button>
               </Link>
             </li>
@@ -73,6 +82,7 @@ function Laboratorio({ lab }) {
         onClose={showModal}
         show={show}
         name={lab.name}
+        id = {lab.id}
       >
         Tem certeza que deseja excluir permanentemente este laboratório?
       </ModalDelete>

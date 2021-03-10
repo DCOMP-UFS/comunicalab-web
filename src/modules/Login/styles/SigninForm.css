@@ -1,0 +1,108 @@
+.userImg {
+  position: absolute;
+  left: 50%;
+  top: 22.5%;
+  transform: translate(-50%, -50%);
+  width: 15%;
+}
+
+.form {
+  position: absolute;
+  left: 75%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 50%;
+}
+
+.formInput {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  height: 40%;
+  width: 60%;
+}
+
+.textInput {
+  position: absolute;
+  border: none;
+  border-radius: 5px;
+  height: 15%;
+  padding: 2%;
+  width: 80%;
+  margin-bottom: 2.5%;
+}
+
+.userInput {
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+}
+
+.userForm {
+  position: absolute;
+  left: 4.5%;
+  top: 20%;
+  transform: translate(-50%, -50%);
+  width: 6%;
+}
+
+.passwordInput {
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.passwordForm {
+  position: absolute;
+  left: 4.5%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 5%;
+}
+
+.checkbox {
+  position: absolute;
+  left: 10%;
+  top: 53%;
+  /* border: 3px solid; */
+  border-radius: 10px;
+  width: 80%; /* 60% */
+  height: 10%; /*15%*/
+}
+
+.checkboxInput {
+  border: none;
+  border-radius: 10px;
+  height: 100%;
+  width: 8%;
+}
+
+.label {
+  position: absolute;
+  color: white;
+  margin-left: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.loginBtn {
+  border: none;
+  border-radius: 10px;
+  background-color: #1818aa;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, -50%);
+  height: 13%;
+  width: 30%;
+}
+
+.error {
+  position: absolute;
+  color: white;
+  left: 50%;
+  transform: translateX(-50%);
+  /* top: 5%; */
+}
