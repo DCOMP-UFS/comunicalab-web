@@ -75,12 +75,12 @@
 }
 
 .menuSubSubMenu {
-  margin: 0px;
-  padding: 0px;
+  margin: auto;
+  padding: auto;
   max-width: 200px;
   word-wrap: break-word;
   float: none;
-  display: block;
+  display: inline-block;
 }
 
 .menuSubSubMenu a {
@@ -88,7 +88,7 @@
   margin: 0px;
   padding: 0px 10px 0px 15px;
   display: block;
-  min-width: 150px;
+  min-width: 50px;
   max-height: 70px;
   border-radius: 5px;
   font-weight: bold;

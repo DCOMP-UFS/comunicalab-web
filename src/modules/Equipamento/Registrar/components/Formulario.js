@@ -84,32 +84,15 @@ function Formulario() {
               <div className="formularioLabel">
                 <p>Localização:</p>
               </div>
-              <div className="formularioSelect">
-                <select
-                  name="localization"
-                  id="localization"
-                  onChange={handleChange}
-                  defaultValue={values.localization}
-                  onBlur={handleBlur}
-                  className={
-                    touched.localization && errors.localization
-                      ? 'has-error'
-                      : null
-                  }
-                >
-                  <option value="" disabled>
-                    Escolha a localização
-                  </option>
-                  <option value="2" id="2">
-                    2
-                  </option>
-                  <option value="3" id="3">
-                    3
-                  </option>
-                  <option value="4" id="4">
-                    4
-                  </option>
-                </select>
+              <div className="formularioRadio">
+                <input type="radio" id="1" value="1" />
+                <label for="1">Laboratório 1</label> <br />
+                <input type="radio" id="2" value="2" />
+                <label for="2">Laboratório 2</label>
+                <br />
+                <input type="radio" id="3" value="3" />
+                <label for="3">Laboratório 3</label>
+                <br />
               </div>
               <Error
                 touched={touched.localization}

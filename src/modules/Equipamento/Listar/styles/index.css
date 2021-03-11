@@ -1,7 +1,37 @@
-.listaEquipamentos {
-  padding-left: 20px;
+.body {
+  margin: auto;
 }
 
-.listaEquipamentos Equipamento {
-  margin-left: 5px;
+.othersTitle {
+  font-size: medium;
+  text-align: left;
+  position: left;
+  margin-top: 10px;
+}
+
+.othersTitle::after {
+  content: '';
+  display: inline-block;
+  position: relative;
+  width: 90%;
+  top: 50%;
+  height: 2px;
+  background: #282828;
+}
+
+.equiptTitle {
+  background-color: black;
+  display: inline;
+  font-size: medium;
+  text-align: left;
+}
+
+.equipTitle::after {
+  content: '';
+  display: inline-block;
+  position: relative;
+  width: 70%;
+  top: 50%;
+  height: 2px;
+  background: #282828;
 }
