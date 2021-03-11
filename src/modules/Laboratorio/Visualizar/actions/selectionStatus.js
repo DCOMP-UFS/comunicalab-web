@@ -1,13 +1,8 @@
-module.exports = function selectionStatus(status) {
-    if (status === false) {
-      return 'equipamentoStatusVerde';
-    }
-    if (status === true) {
-      return 'equipamentoStatusVermelho';
-    }
-    //if (status === 'Reservado') {
-    //  return 'equipamentoStatusAmarelo';
-    //}
-    return 'equipamentoStatusError';
-  };
-  
+export default function selectionStatus(isInUse) {
+  if (isInUse === false) {
+    return 'equipamentoStatusVerde';
+  } else return 'equipamentoStatusVermelho';
+  //if (status === 'Reservado') {
+  //  return 'equipamentoStatusAmarelo';
+  //}
+}
