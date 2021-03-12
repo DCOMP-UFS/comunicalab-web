@@ -17,10 +17,17 @@ const validationSchema = Yup.object().shape({
     .required('Digite a categoria do Software!'),
 });
 
-function Formulario() {
+function Form() {
   return (
     <Formik
-      initialValues={{ name: '', category: '', equipment: '' }}
+      initialValues={{
+        name: '',
+        version: '',
+        license: '',
+        soft_category_id: '',
+        isActive: 0,
+        isDeleted: 0,
+      }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
         setSubmitting(true);
@@ -71,45 +78,115 @@ function Formulario() {
                   placeholder="Categoria"
                   type="text"
                   onChange={handleChange}
-                  value={values.category}
+                  value={values.softcategory_id}
                   onBlur={handleBlur}
                   className={
-                    touched.category && errors.category ? 'has-error' : null
+                    touched.softcategory_id && errors.softcategory_id
+                      ? 'has-error'
+                      : null
                   }
                 />
               </div>
-              <Error touched={touched.category} message={errors.category} />
+              <Error
+                touched={touched.soft_category_id}
+                message={errors.soft_category_id}
+              />
             </div>
             <div className="formularioLinha">
               <div className="formularioLabel">
-                <p>Equipamento:</p>
+                <p>Versão:</p>
+              </div>
+              <div className="formularioInput">
+                <input
+                  name="version"
+                  id="version"
+                  placeholder="Versão"
+                  type="text"
+                  onChange={handleChange}
+                  value={values.version}
+                  onBlur={handleBlur}
+                  className={
+                    touched.version && errors.version ? 'has-error' : null
+                  }
+                />
+              </div>
+              <Error touched={touched.version} message={errors.version} />
+            </div>
+            <div className="formularioLinha">
+              <div className="formularioLabel">
+                <p>Licença:</p>
+              </div>
+              <div className="formularioInput">
+                <input
+                  name="license"
+                  id="license"
+                  placeholder="Licença"
+                  type="text"
+                  onChange={handleChange}
+                  value={values.license}
+                  onBlur={handleBlur}
+                  className={
+                    touched.license && errors.license ? 'has-error' : null
+                  }
+                />
+              </div>
+              <Error touched={touched.license} message={errors.license} />
+            </div>
+            <div className="formularioLinha">
+              <div className="formularioLabel">
+                <p>Ativo:</p>
               </div>
               <div className="formularioSelect">
                 <select
-                  name="equipment"
-                  id="equipment"
+                  name="active"
+                  id="active"
                   onChange={handleChange}
-                  defaultValue={values.equipment}
+                  defaultValue={values.isActive}
                   onBlur={handleBlur}
                   className={
-                    touched.equipment && errors.equipment ? 'has-error' : null
+                    touched.isActive && errors.isActive ? 'has-error' : null
                   }
                 >
                   <option value="" disabled>
-                    Escolha o equipamento
+                    Ativo?
                   </option>
-                  <option value="2" id="2">
-                    2
+                  <option value="0" id="0">
+                    Não
                   </option>
-                  <option value="3" id="3">
-                    3
-                  </option>
-                  <option value="4" id="4">
-                    4
+                  <option value="1" id="1">
+                    Sim
                   </option>
                 </select>
               </div>
-              <Error touched={touched.equipment} message={errors.equipment} />
+              <Error touched={touched.isActive} message={errors.isActive} />
+            </div>
+            <div className="formularioLinha">
+              <div className="formularioLabel">
+                <p>Deletado:</p>
+              </div>
+              <div className="formularioSelect">
+                <select
+                  name="deleted"
+                  id="deleted"
+                  onChange={handleChange}
+                  defaultValue={values.isDeleted}
+                  onBlur={handleBlur}
+                  className={
+                    touched.isDeleted && errors.isDeleted ? 'has-error' : null
+                  }
+                >
+                  <option value="" disabled>
+                    Deletado?
+                  </option>
+                  <option value="0" id="0">
+                    Não
+                  </option>
+                  <option value="1" id="1">
+                    Sim
+                  </option>
+                </select>
+              </div>
+              <Error touched={touched.isDeleted} message={errors.isDeleted} />
             </div>
             <div className="formularioButton">
               <div className="formularioButtonCancelar">
@@ -128,4 +205,4 @@ function Formulario() {
   );
 }
 
-export default Formulario;
+export default Form;

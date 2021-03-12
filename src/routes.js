@@ -1,9 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import softwareRegistrar from './modules/Software/Register/index';
-import softwareListar from './modules/Software/List/index';
-
 import equipamentoEditar from './modules/Equipamento/Editar/index';
 import equipamentoListar from './modules/Equipamento/Listar/index';
 import equipamentoRegistrar from './modules/Equipamento/Registrar/index';
@@ -14,6 +11,11 @@ import laboratorioListar from './modules/Laboratorio/Listar/index';
 import laboratorioRegistrar from './modules/Laboratorio/Registrar/index';
 import laboratorioVisualizar from './modules/Laboratorio/Visualizar/index';
 import login from './modules/Login/index';
+import OsImageRouter from './modules/os-image/OsImageRouter';
+
+import softwareRegistrar from './modules/Software/Register/index';
+import softwareListar from './modules/Software/List/index';
+import softwareEditar from './modules/Software/Register/components/SoftwareEdit';
 
 export default function Routes() {
   return (
@@ -40,6 +42,11 @@ export default function Routes() {
 
         <Route path="/Software/Registrar" component={softwareRegistrar} />
         <Route path="/Software/Listar" component={softwareListar} />
+        <Route path="/Software/Editar/:id" component={softwareEditar} />
+
+        <Route path="/Imagens">
+          <OsImageRouter />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

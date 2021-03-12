@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
+import api from '../../../services/api';
 import Menu from '../../../utils/components/Menu';
 import Title from '../../../utils/components/Title';
 import Toolbar from '../../../utils/components/Toolbar';
@@ -7,35 +7,42 @@ import Software from './components/Software';
 
 import './styles/index.css';
 
-export default function ListSoftware() {
-  const softwares = {
-    sw01: {
-      id: '01',
-      name: 'Android Studio',
-      category: 'Desenvolvimento',
-    },
-    sw02: {
-      id: '02',
-      name: 'Libre Office',
-      category: 'Office',
-    },
-    sw03: {
-      id: '03',
-      name: 'Corel Draw',
-      category: 'Gráficos',
-    },
-  };
-  const quantity = `${Object.keys(softwares).length} itens`;
+const ListSoftwares = () => {
+  const [softwares, setSoftwares] = useState([]);
+
+  useEffect(() => {
+    api.get('software').then((res) =>
+      setSoftwares(
+        res.data.map((software) => ({
+          id: software.id,
+          name: software.name,
+          version: software.version,
+          softcategory_id: software.softcategory_id,
+        }))
+      )
+    );
+  }, []);
+
+  let toolbarSubtitle;
+  if (softwares.length === 1) {
+    toolbarSubtitle = `(1 item)`;
+  } else if (softwares.length > 1) {
+    toolbarSubtitle = `(${softwares.length} itens)`;
+  } else {
+    toolbarSubtitle = undefined;
+  }
+
   return (
     <div>
       <Toolbar />
       <Menu />
-      <Title title="Listar Sofware" subTitle={quantity} />
+      <Title title="Listar Sofware" subTitle={toolbarSubtitle} />
       <div className="listSoftwares">
-        <Software key={softwares.sw01.id} software={softwares.sw01} />
-        <Software key={softwares.sw02.id} software={softwares.sw02} />
-        <Software key={softwares.sw03.id} software={softwares.sw03} />
+        <Software softwares={softwares} />
+        {/*console.log(softwares)*/}
       </div>
     </div>
   );
-}
+};
+
+export default ListSoftwares;

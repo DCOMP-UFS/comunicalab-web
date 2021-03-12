@@ -3,10 +3,6 @@ import '../styles/ModalDelete.css';
 import PropTypes from 'prop-types';
 
 export default class ModalDelete extends React.PureComponent {
-  onClose = (e) => {
-    this.props.onClose && this.props.onClose(e);
-  };
-
   render() {
     if (!this.props.show) {
       return null;
@@ -22,12 +18,12 @@ export default class ModalDelete extends React.PureComponent {
           </div>
           <div className="modalDeleteActions">
             <div className="modalDeleteNot">
-              <button type="button" onClick={this.onClose}>
+              <button type="button" onClick={this.props.onClose}>
                 <strong> NÃO </strong>
               </button>
             </div>
             <div className="modalDeleteYes">
-              <button type="button">
+              <button type="button" onClick={this.props.onConfirm}>
                 <strong> SIM </strong>
               </button>
             </div>
@@ -39,5 +35,6 @@ export default class ModalDelete extends React.PureComponent {
 }
 ModalDelete.propTypes = {
   onClose: PropTypes.func.isRequired,
+  onConfirm: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
 };
