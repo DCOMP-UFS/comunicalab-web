@@ -1,32 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/ModalDelete.css';
 import PropTypes from 'prop-types';
 
 import ConfirmDelete from './ConfirmDelete';
 
-export default class ModalDelete extends React.PureComponent {
+const ModalDelete = (props) => {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      show: false
-    }
-  }
-  onClose = (e) => {
-    this.props.onClose && this.props.onClose(e);
+  const [show,setShow] = useState(false);
+
+  const onClose = (e) => {
+    props.onClose && props.onClose(e);
   };
 
-  showModal = () => {
-    console.log(this.props.id);
-    this.setState({
-      show : !this.state.show
-    });
+  const showModal = () => {
+    setShow(!show);
   };
 
-  render() {
-    if (!this.props.show) {
-      return null;
-    }
+  if (!props.show) return null;
     return (
       <div className="modalDelete">
         <div className="modalDeleteBox" id="modal">
@@ -34,33 +24,34 @@ export default class ModalDelete extends React.PureComponent {
             <h2> Você tem certeza disso </h2>
           </div>
           <div className="modalDeleteText">
-            <h2>{this.props.children}</h2>
+            <h2>{props.children}</h2>
           </div>
           <div className="modalDeleteActions">
             <div className="modalDeleteNot">
-              <button type="button" onClick={this.props.onClose}>
+              <button type="button" onClick={onClose}>
                 <strong> NÃO </strong>
               </button>
             </div>
             <div className="modalDeleteYes">
-              <button type="button" onClick ={this.showModal}>
+              <button type="button" onClick ={showModal}>
                 <strong> SIM </strong>
               </button>
             </div>
           </div>
         </div>
         <ConfirmDelete
-        title={this.props.name}
-        id = {this.props.id}
-        onClose={this.showModal}
-        show={this.state.show}
+        title={props.name}
+        id = {props.id}
+        onClose={showModal}
+        show={show}
       >
       </ConfirmDelete>
       </div>
     );
   }
-}
 ModalDelete.propTypes = {
   onClose: PropTypes.func.isRequired,
   show: PropTypes.bool.isRequired,
 };
+
+export default ModalDelete;
