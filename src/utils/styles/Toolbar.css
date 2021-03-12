@@ -9,7 +9,6 @@
       rgba(255, 255, 255, 0) 72.59%
     ),
     #000080;
-  flex-grow: 1;
   position: 'static';
   white-space: pre-line;
 }

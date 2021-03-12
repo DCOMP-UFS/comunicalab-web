@@ -4,44 +4,52 @@ import * as yup from 'yup';
 import dayjs from 'dayjs';
 import * as customParseFormat from 'dayjs/plugin/customParseFormat';
 import styles from './OsImageForm.module.css';
-import PropsType from 'prop-types';
+import clsx from 'clsx';
 
 dayjs.extend(customParseFormat);
 
+const validationSchema = yup.object({
+  name: yup.string().required('Nome é obrigatório'),
+  builtAt: yup
+    .string()
+    .required('Data de criação é obrigatório')
+    .test('Data de criação é inválida', (value) => {
+      const parsedDate = dayjs(
+        value,
+        ['D/M/YYYY', 'DD/M/YYYY', 'D/MM/YYYY', 'DD/MM/YYYY'],
+        true
+      );
+      return parsedDate.isValid();
+    }),
+});
+
 const OsImageForm = (props) => {
-  const validationSchema = yup.object({
-    name: yup.string().required('Nome é obrigatório'),
-    builtAt: yup
-      .string()
-      .required('Data de criação é obrigatório')
-      .test({
-        name: 'isValidDate',
-        message: 'Data de criação é inválida',
-        test: (value) => {
-          const parsedDate = dayjs(
-            value,
-            ['D/M/YYYY', 'DD/M/YYYY', 'D/MM/YYYY', 'DD/MM/YYYY'],
-            true
-          );
-          return parsedDate.isValid();
-        },
-      }),
-  });
+  const {
+    className,
+    initialValues = {
+      name: '',
+      builtAt: '',
+    },
+    onSubmit,
+    onCancel,
+    cancelLabel = 'Cadastrar',
+    submitLabel = 'Cancelar',
+    ...otherProps
+  } = props;
 
   const formik = useFormik({
-    initialValues: props.initialValues,
+    initialValues,
     validationSchema,
     validateOnMount: true,
-    onSubmit: (values) => {
-      props.onSubmit(values);
-    },
+    onSubmit,
   });
 
   return (
     <form
-      className={styles.registerWrapper}
+      className={clsx(styles.registerWrapper, className)}
       onSubmit={formik.handleSubmit}
       noValidate
+      {...otherProps}
     >
       <div className={styles.formWrapper}>
         <div className={styles.fieldWrapper}>
@@ -70,40 +78,19 @@ const OsImageForm = (props) => {
       </div>
 
       <div className={styles.optionsWrapper}>
-        <button
-          className={styles.optionsBtn}
-          type="button"
-          onClick={props.onCancel}
-        >
-          {props.cancelLabel}
+        <button className={styles.optionsBtn} type="button" onClick={onCancel}>
+          {cancelLabel}
         </button>
         <button
           className={styles.optionsBtn}
           type="submit"
           disabled={!formik.isValid}
         >
-          {props.submitLabel}
+          {submitLabel}
         </button>
       </div>
     </form>
   );
-};
-
-OsImageForm.propTypes = {
-  initialValues: PropsType.object,
-  onSubmit: PropsType.func.isRequired,
-  onCancel: PropsType.func.isRequired,
-  submitLabel: PropsType.string,
-  cancelLabel: PropsType.string,
-};
-
-OsImageForm.defaultProps = {
-  initialValues: {
-    name: '',
-    builtAt: '',
-  },
-  submitLabel: 'Cadastrar',
-  cancelLabel: 'Cancelar',
 };
 
 export default OsImageForm;

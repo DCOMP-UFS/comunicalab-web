@@ -1,0 +1,22 @@
+.labCard {
+  min-width: 17.5rem;
+}
+
+.labContentWrapper {
+  flex: 1;
+  margin-left: 0.25rem;
+}
+
+.labTitle {
+  font-size: 1rem;
+}
+
+.labSubtitle {
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.labInfo {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+}

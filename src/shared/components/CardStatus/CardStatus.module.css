@@ -1,0 +1,16 @@
+.cardStatus {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-block;
+  clip-path: circle();
+}
+
+.cardStatusOk {
+  composes: cardStatus;
+  background: #00ff29;
+}
+
+.cardStatusCaution {
+  composes: cardStatus;
+  background: #fff500;
+}

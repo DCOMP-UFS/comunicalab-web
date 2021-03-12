@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import api from '../../../../services/api';
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
+import { useRootStore } from '../../../../data/store/root-store';
 import Menu from '../../../../utils/components/Menu';
 import Title from '../../../../utils/components/Title';
 import Toolbar from '../../../../utils/components/Toolbar';
-import OsImageList from '../../components/OsImageList/OsImageList';
 import styles from './ListOsImages.module.css';
+import OsImageListItem from '../../components/OsImageListItem/OsImageListItem';
 
-const ListOsImages = () => {
-  const [osImages, setOsImages] = useState([]);
+const ListOsImages = observer(() => {
+  const { osImageStore } = useRootStore();
+
+  const osImages = osImageStore.osImages;
 
   useEffect(() => {
-    api.get('osImage').then((res) =>
-      setOsImages(
-        res.data.map((image) => ({
-          id: image.id,
-          name: image.name,
-          builtAt: image.built_at,
-        }))
-      )
-    );
-  }, []);
+    osImageStore.fetchAll();
+  }, [osImageStore]);
+
+  const imagesList = osImages.map((osImage) => (
+    <OsImageListItem
+      className={styles.listItem}
+      key={osImage.id}
+      osImage={osImage}
+    />
+  ));
 
   let toolbarSubtitle;
   if (osImages.length === 1) {
@@ -36,10 +39,10 @@ const ListOsImages = () => {
       <Menu />
       <Title title="Listar Imagens" subTitle={toolbarSubtitle} />
       <div className={styles.wrapper}>
-        <OsImageList images={osImages} />
+        <div className={styles.listWrapper}>{imagesList}</div>
       </div>
     </>
   );
-};
+});
 
 export default ListOsImages;
