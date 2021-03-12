@@ -1,35 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import Menu from '../../../utils/components/Menu';
-import Title from '../../../utils/components/Title';
-import Toolbar from '../../../utils/components/Toolbar';
-import Formulario from './components/Formulario';
+import Menu from '../../../../utils/components/Menu';
+import Title from '../../../../utils/components/Title';
+import Toolbar from '../../../../utils/components/Toolbar';
+import Formulario from './Formulario';
 import { Redirect } from 'react-router-dom';
-import api from '../../../services/api';
+import api from '../../../../services/api';
 
 const Editar = (props) => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
+  const [category, setCategory] = useState([]);
   const [location, setLocation] = useState([]);
   const cancelHandler = () => setShouldRedirect(true);
 
   useEffect(() => {
     api
-      .get('/locations')
+      .get('/laboratory')
       .then((res) => {
-        console.log(res);
         setLocation(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
+    api
+      .get('/equip_category')
+      .then((res) => {
+        setCategory(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   });
-
   const submitHandler = async (values) => {
-    const newLab = {
-      name: values.name,
-      capacity: values.capacity,
+    const newEquip = {
+      brand: values.name,
+      equip_category_id: values.category,
+      laboratory_id: values.localization,
     };
     try {
-      await api.put(`/laboratory/${props.location.state.id}`, newLab);
+      await api.put(`/equipment/${props.location.state.id}`, newEquip);
       setShouldRedirect(true);
     } catch {
       alert('Erro no servidor. Por favor, tente mais tarde');
@@ -42,11 +50,12 @@ const Editar = (props) => {
     <div>
       <Toolbar />
       <Menu />
-      <Title title="Editar Laboratório" subTitle={props.location.state.name} />
+      <Title title="Editar Equipamento" subTitle={props.location.state.brand} />
       <Formulario
         onSubmit={submitHandler}
         onCancel={cancelHandler}
         location={location}
+        categories={category}
       />
     </div>
   );
