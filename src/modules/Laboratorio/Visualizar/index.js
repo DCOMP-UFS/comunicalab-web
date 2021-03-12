@@ -1,58 +1,53 @@
-import React, {Component} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import Menu from '../../../utils/components/Menu';
 import Title from '../../../utils/components/Title';
 import Toolbar from '../../../utils/components/Toolbar';
 import Equipamento from './components/equipment';
+import api from '../../../services/api';
 
-class Listar extends Component {
-  
-  constructor(props){
-    super(props);
-    this.state ={
-      isLoaded: false,
-      eqp: [],
-      eqpInLab: []  
-    }
-  }
+const Listar = (props) => {
+  const [state, setState] = useState([]);
 
-  async componentDidMount(){
-    await fetch('https://comunicabackdev.herokuapp.com/equipment')
-    .then(res => res.json())  
-    .then(json => {
-        this.setState({
-          isLoaded: true,
-          eqp:json, 
-        })
-      })
-      for (let index = 0; index < this.state.eqp.length; index++) {
-        let element = this.state.eqp[index];
-        if (this.props.location.state.id === element.laboratory_id) {
-          this.setState({
-            eqpInLab: this.state.eqpInLab.concat(element)
-          })
+  const filterData = useCallback(
+    (res) => {
+      let filteredData = [];
+      for (let index = 0; index < res.length; index++) {
+        let element = res[index];
+        if (props.location.state.id === element.laboratory_id) {
+          filteredData = filteredData.concat(element);
         }
       }
-    }
+      return filteredData;
+    },
+    [props]
+  );
 
-  render(){
-    return (
-      <div>
-        <Toolbar />
-        <Menu />
-        <Title title="Listar Equipamentos"/>
-          <div className="listaEquipamentos">
-            <ul>
-              {this.state.eqpInLab.map( item =>(
-                <li key = {item.id}>
-                    <Equipamento eqp = {item} path = {window.location.pathname}/>
-                </li>
-              ))}
-            </ul>
-        </div>
+  useEffect(() => {
+    async function fetchData() {
+      const res = await api.get('/equipment');
+      const data = filterData(await res.data);
+      setState(data);
+    }
+    fetchData();
+  }, [filterData]);
+
+  return (
+    <div>
+      <Toolbar />
+      <Menu />
+      <Title title="Listagem de Equipamentos" />
+      <div className="listaEquipamentos">
+        <ul>
+          {state.map((item) => (
+            <li key={item.id}>
+              <Equipamento eqp={item} path={window.location.pathname} />
+            </li>
+          ))}
+        </ul>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Listar;
